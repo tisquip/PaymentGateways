@@ -1,0 +1,32 @@
+﻿@page "{Reference}"
+@model SASA.PayNow.SampleClient.RazorP.Pages.InvoiceModel
+@{
+    ViewData["Title"] = "Invoice";
+}
+
+@if (Model.PayNowObject == null)
+{
+    <p>No Invoice Found</p>
+}
+else
+{
+    <p>Ref : @Model.PayNowObject.Reference</p>
+    <p>Total : $ @Model.PayNowObject.Total.ToString("0.00")</p>
+    <p>Status : @Model.PayNowObject.PaymentStatus.ToString()</p>
+
+    @if (!String.IsNullOrWhiteSpace(Model.PayNowObject.PollUrl))
+    {
+        <p>Poll Url : @Model.PayNowObject.PollUrl</p>
+        <form asp-page-handler="Poll">
+            <input type="hidden" asp-for="SelectedReference" value="@Model.Reference" />
+            <button type="submit" class="btn btn-primary">Poll PayNow</button>
+        </form>
+    }
+    else
+    {
+        <p>Not Processed Yet</p>
+    }
+
+
+}
+
