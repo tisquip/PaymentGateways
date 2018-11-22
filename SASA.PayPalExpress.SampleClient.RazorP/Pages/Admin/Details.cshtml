@@ -1,0 +1,31 @@
+﻿@page
+@model SASA.PayPalExpress.SampleClient.RazorP.Pages.Admin.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PayPalBearersToken</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PayPalBearersToken.Token)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PayPalBearersToken.Token)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.PayPalBearersToken.DateTimeObtained)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.PayPalBearersToken.DateTimeObtained)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.PayPalBearersToken.Id">Edit</a> |
+    <a asp-page="./Index">Back to List</a>
+</div>

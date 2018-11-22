@@ -1,0 +1,18 @@
+﻿@page
+@model AboutModel
+@{
+    ViewData["Title"] = "About";
+}
+<h2>@ViewData["Title"]</h2>
+<h3>@Model.Message</h3>
+
+<p>Use this area to provide additional information.</p>
+<div id="paypal-button"></div>
+<input type="hidden" value="/api/PayPal/createPayment/12/34" id="createPaymentUrl" />
+<input type="hidden" value="/api/PayPal/executePayment/34" id="executePaymentUrl" />
+<input type="hidden" value="0" id="payPalMode" />
+
+@section Scripts{
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script src="~/js/sasa-paypal.js"></script>
+}

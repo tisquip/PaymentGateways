@@ -1,0 +1,30 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<h3>PayPal Test</h3>
+
+<div id="paypal-button"></div>
+
+<input type="hidden" value="@Model.CreatePaymentUrl" id="createPaymentUrl" />
+<input type="hidden" value="@Model.ExecutePaymentUrl" id="executePaymentUrl" />
+
+<!-- 0 = sandbox, anyother value = live -->
+<input type="hidden" value="@Model.PayPalSelectedMode" id="payPalMode" />
+
+
+@section Scripts {
+
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+    <script src="~/js/sasa-paypal.js"></script>
+}
+
+
+
+
+
+
+
