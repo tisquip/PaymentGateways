@@ -1,0 +1,49 @@
+﻿
+
+1. Setup your Keys and Ids (eg in the appsettings) with something like so : 
+
+"PayPal":{
+	"PayPalSandBoxKey": "laoauFROMPAYPAL",
+	"PayPalLiveKey": "laoauFROMPAYPAL",
+	"PayPalSandBoxCliendId": "laoauFROMPAYPAL",
+	"PayPalLiveCliendId": "laoauFROMPAYPAL"
+}
+
+Then you use it in your class to retrieve the keys after injecting IConfigaration e.g
+string liveId = configuration.GetSection("PayPal").GetSection("PayPalLiveCliendId").Value;
+
+2. Inherit from PayPalSettingsBaseClass Abstract class which implements IPayPalSettings, your inherited class can then be used
+as the concrete implementation of the interface, especially on regisering dependencies. 
+When requiring the keys, you can use the IConfigaration (details in 1.) in your implemented class.
+
+3. Create classes that Implement interfaces ISASACartItem and ISASAShoppingCart in the respective cart items 
+and shopping cart of your own models.
+
+4. Add PayPalBearersToken Model to your database and implement IRepositoryPayPalBearersToken, which will be needed 
+in the settings class (the one that inherits from PayPalSettingsBase)
+
+5. Create an Api controller that will handle the createpayment and executepayment calls that will be called by PayPal.
+Look at Instructions_02_ExamplePayPalController.txt
+
+6. Copy the sasa-paypal-script.js code and put it on a javascript file that can be served from wwwroot
+.The js file should go on the page where the paypal button needs to be, 
+Add the javascript file after adding the paypal script which is
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+
+7. In the html where the paypal should be, add a div tag with the id paypal-button, where the button will render.
+<div id="paypal-button"></div>
+
+then add the following hidden input tags with thier ids, these input tags will provide the information needed for the
+sasa javascript script
+
+<div id="paypal-button"></div>
+
+<input type="hidden" value="/api/PayPal/createPayment/12/34" id="createPaymentUrl" />
+<input type="hidden" value="/api/PayPal/executePayment/34" id="executePaymentUrl" />
+
+<!-- 0 = sandbox, anyother value = live -->
+<input type="hidden" value="0" id="payPalMode" /> 
+
+ 
+
+
