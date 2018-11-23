@@ -2,6 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
+    <Authors>Kudzanayi Takaendesa - tisquip6@gmail.com</Authors>
+    <Version>0.1.0</Version>
+    <Description>For paypal express payments</Description>
+    <RepositoryUrl>https://github.com/tisquip/PaymentGateways</RepositoryUrl>
+    <PackageReleaseNotes>Pre-Release version</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
