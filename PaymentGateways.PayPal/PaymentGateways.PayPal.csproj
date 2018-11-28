@@ -10,6 +10,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Instructions_01_Summary.txt" />
+    <None Remove="Instructions_02_ExamplePayPalController.txt" />
+    <None Remove="sasa-paypal-script.js" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Instructions_01_Summary.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Instructions_02_ExamplePayPalController.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="sasa-paypal-script.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="PayPal.SDK.NETCore" Version="1.9.1.2" />
   </ItemGroup>
 
